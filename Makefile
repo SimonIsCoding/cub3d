@@ -6,7 +6,7 @@
 #    By: pde-masc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/19 11:50:04 by pde-masc          #+#    #+#              #
-#    Updated: 2024/09/19 15:12:45 by pde-masc         ###   ########.fr        #
+#    Updated: 2024/09/19 15:47:20 by pde-masc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ NAME = cub3d
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall -g3
 MLXFLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
-INCLUDES = -I./header -I./usr/include -Imlx
+INCLUDES = -I./headers -I./usr/include -Imlx
+
+HEADER = $(wildcard ./header/*.h)
 
 MLX_DIR = ./mlx
 MLX = $(MLX_DIR)/libmlx_Linux.a

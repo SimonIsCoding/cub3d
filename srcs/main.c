@@ -1,9 +1,7 @@
-#include "stdio.h"
-#include "../mlx/mlx.h"
-#include "../libft/libft.h"
+#include "cub3d.h"
 
 int main(void)
 {
-	printf("Wsh\n");
+	printf("okokokokokokok\n");
 	return (0);
 }
