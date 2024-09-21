@@ -25,7 +25,4 @@ _3_ implementation du "DDA algorithm" et du raycasting
 _4_ rendering
 
 Peut-etre qu'il faudrait separer notre code en plusieurs dossiers
-genre   srcs/parsing
-	/mlx
-	/raycasting
-	/rendering
+genre   srcs/parsing	/mlx	/raycasting	/rendering
