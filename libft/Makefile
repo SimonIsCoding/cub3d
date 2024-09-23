@@ -57,11 +57,11 @@ bonus:		$(OBJ) $(BONUS_OBJ) $(HEADER)
 clean:
 		@$(RM) $(OBJ)
 		@$(RM) $(BONUS_OBJ)
-		@echo "$(BROWN)Libft: $(GREEN)removed objects!$(DEF_COLOR)"
+		@echo "$(BROWN)libft: $(GREEN)removed objects!$(DEF_COLOR)"
 
 fclean:		clean
 		@$(RM) $(NAME)
-		@echo "$(BROWN)Libft: $(GREEN)removed binaries!$(DEF_COLOR)"
+		@echo "$(BROWN)libft: $(GREEN)removed binaries!$(DEF_COLOR)"
 
 re:			fclean all
 

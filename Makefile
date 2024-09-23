@@ -35,20 +35,21 @@ LIBFT_HEADER = $(LIBFT_DIR)/libft.h
 SRCS_DIR = srcs/
 OBJS_DIR = objs/
 
-SRCS = $(wildcard $(SRCS_DIR)*.c)
-OBJS = $(addprefix $(OBJS_DIR),$(notdir $(SRCS:.c=.o)))
+SRCS = $(shell find $(SRCS_DIR) -name "*.c")
+OBJS = $(patsubst $(SRCS_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS))
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS_DIR) $(OBJS) $(HEADER) Makefile
-	@$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(INCLUDES) -o $@ $<
+	@$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(MLXFLAGS) -o $@ $<
 	@echo "$(GREEN)$(NAME) created$(DEF_COLOR)"
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER) Makefile
+	@mkdir -p $(dir $@)
 	@echo "$(BROWN)Compiling   ${BLUE}→   $(ORANGE)$< $(DEF_COLOR)"
 	@$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 $(OBJS_DIR):
-	@mkdir $@
+	@mkdir -p $@
 
 $(LIBFT): $(LIBFT_HEADER)
 	@echo "$(GREY)Compiling libft$(DEF_COLOR)"
@@ -62,14 +63,15 @@ $(MLX):
 clean:
 	@$(MAKE) -s -C $(LIBFT_DIR) clean
 	@rm -rf $(MLX_DIR)/obj
+	@echo "$(BROWN)mlx: $(GREEN)removed objects!$(DEF_COLOR)"
 	@rm -rf $(OBJS_DIR)
-	@echo "$(GREEN)Objects removed$(DEF_COLOR)"
+	@echo "$(GREEN)All objects removed$(DEF_COLOR)"
 
 fclean: clean
 	@$(MAKE) -s -C $(MLX_DIR) clean
 	@rm -f $(LIBFT)
 	@rm -f $(NAME)
-	@echo "$(GREEN)Binaries removed$(DEF_COLOR)"
+	@echo "$(GREEN)All binaries removed$(DEF_COLOR)"
 
 re:	fclean all
 
